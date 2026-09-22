@@ -1,0 +1,41 @@
+rules_version = '2';
+
+/*
+ * Қаржы — Firestore қауіпсіздік ережелері.
+ *
+ * Модель: әркім аноним авторизациядан өтеді (логин экраны жоқ), содан кейін
+ * ғана дерекке қол жеткізеді. Үйдің коды мен жеке кілт — құпия сөз рөлінде:
+ * оларды білмеген адам жолды таба алмайды.
+ *
+ * Қою жолы: Firebase консолі → Firestore Database → Rules → осыны қойып,
+ * «Publish» басу.
+ */
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Үйлер: код білетін кез келген авторизацияланған қолданушы
+    match /houses/{code} {
+      allow read, write: if signedIn();
+      match /{document=**} {
+        allow read, write: if signedIn();
+      }
+    }
+
+    // Жеке журналдар: кілт білетін авторизацияланған қолданушы
+    match /solo/{key} {
+      allow read, write: if signedIn();
+      match /{document=**} {
+        allow read, write: if signedIn();
+      }
+    }
+
+    // Қалғанының бәрі жабық
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
