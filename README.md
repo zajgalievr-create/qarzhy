@@ -1,12 +1,12 @@
 # Қаржы
 
 Пәтерлес студенттерге арналған ортақ шығын есебі және жеке қаржы журналы.
-Құрылымы қарапайым: build қадамы жоқ, framework жоқ — үш статикалық файл.
+Құрылымы қарапайым: build қадамы жоқ, framework жоқ — таза статикалық файлдар.
 
 ## Локальді іске қосу
 
 ```bash
-cd ~/Documents/ortaq-qalta
+cd ~/Documents/qarzhy
 python3 serve.py
 ```
 
@@ -19,7 +19,7 @@ python3 serve.py
 
 ## Тірі сайт
 
-**https://ortaq-qalta.vercel.app**
+**https://qarzhy-site.vercel.app**
 
 Репозиторий: [zajgalievr-create/qarzhy](https://github.com/zajgalievr-create/qarzhy)
 
