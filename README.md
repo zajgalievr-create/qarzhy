@@ -21,10 +21,23 @@ python3 serve.py
 
 **https://ortaq-qalta.vercel.app**
 
-Жоба Vercel-ге қосылған (`.vercel/project.json`). Өзгерістен кейін қайта шығару:
+Репозиторий: [zajgalievr-create/qarzhy](https://github.com/zajgalievr-create/qarzhy)
+
+Vercel GitHub-қа байланған, сондықтан деплой автоматты:
 
 ```bash
-cd ~/Documents/ortaq-qalta
+git add -A
+git commit -m "не өзгергені"
+git push
+```
+
+`main` бұтағына пуш жасаған сайын өндірістік нұсқа жаңарады. Басқа бұтаққа
+пуш жасасаң, Vercel бөлек алдын ала қарау (preview) сілтемесін береді —
+өндірістік сайтқа тимейді.
+
+Қолмен шығару керек болса:
+
+```bash
 npx vercel deploy --prod
 ```
 
